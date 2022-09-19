@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="theme1.css">
+  <title>Frontend Mentor | Calculator app</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap" rel="stylesheet">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <header>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </header>
+    <nav >
+    
+     <div class="header">
+        <p class="calc">calc</p>
+      <div class="toggle">
+        <p >THEME </p>
+      <p class="tri-state-toggle">
+
+        <input class="button" type="radio" name="toggle" id="one" />
+        <input class="button" type="radio" name="toggle" id="two" />
+        <input class="button" type="radio" name="toggle" id="three" />
+      </p>
+      </div>
+     </div>
+    </nav>
+    <div class="screen ">0</div>
+    <div class="keypad ">
+      <table id="myTable">
+        <tr>
+          <td >7</td>
+          <td >8</td>
+          <td >9</td>
+          <td  data-action="clear" class="del">DEL</td>
+        </tr>
+        <tr>
+          <td >4</td>
+          <td >5</td>
+          <td >6</td>
+          <td data-action="add">+</td>
+        </tr>
+        <tr>
+          <td >1</td>
+          <td >2</td>
+          <td >3</td>
+          <td data-action="subtract">-</td>
+        </tr>
+        <tr>
+          <td data-action="decimal">.</td>
+          <td >0</td>
+          <td data-action="divide">/</td>
+          <td data-action="multiply">x</td>
+        </tr>
+        <tr>
+          <td  data-action="reset" colspan="2" class="reset">RESET</td>
+          <td data-action="calculate" colspan="2" class="equal">=</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+
+
+
+
+
+<script type="text/javascript">
+ 
+
+var buttons = document.getElementsByClassName("button");
+var body = document.getElementsByTagName("body");
+var screen = document.getElementsByClassName("screen");
+var keypad = document.getElementsByClassName("keypad");
+var reset = document.getElementsByClassName("reset");
+var equal = document.getElementsByClassName("equal");
+var del = document.getElementsByClassName("del");
+var td = document.querySelectorAll("td");
+var header = document.getElementsByTagName("p");
+var toggle = document.getElementsByClassName("toggle");
+var input = document.getElementsByClassName("tri-state-toggle");
+
+
+var arr = [...buttons];
+
+arr.forEach((element, index) => {
+  element.addEventListener("click", () => {
+    element.style.opacity = "1";
+    if (index == 0) {
+      document.getElementsByTagName("body")[0].style.backgroundColor = " hsl(222, 26%, 31%)";
+       td.forEach((item) => {
+        item.style.backgroundColor =" white";
+        item.style.color = "hsl(222, 26%, 31%)"
+        item.style.boxShadow = "0 3px hsl(224, 28%, 35%)"
+      });
+      input[0].style.backgroundColor ="hsl(224, 36%, 15%)";
+     
+      header[0].style.color = ""
+      toggle[0].style.color = "white"
+      reset[0].style.backgroundColor = "hsl(224, 28%, 35%)";
+      reset[0].style.color = "white"
+      reset[0].style.boxShadow = "0 3px hsl(222, 26%, 31%)"
+      del[0].style.backgroundColor = "hsl(224, 28%, 35%)";
+      del[0].style.color = "white";
+      equal[0].style.backgroundColor = "hsl(6, 63%, 50%)";
+      equal[0].style.color = "white";
+      equal[0].style.boxShadow = "0 3px hsl(6, 70%, 34%)";
+      document.getElementsByClassName("keypad")[0].style.backgroundColor = " hsl(223, 31%, 20%)";
+      document.getElementsByClassName("screen")[0].style.backgroundColor ="hsl(224, 36%, 15%)";
+       screen[0].style.color ="white";
+       document.getElementsByTagName("ul")[0].style.color = "white"
+     
+    } else if (index == 1) {
+      document.getElementsByTagName("body")[0].style.backgroundColor = "hsl(0, 0%, 90%)";
+      td.forEach((item) => {
+        item.style.backgroundColor =" hsl(0, 0%, 90%)";
+        item.style.color =" black";
+        item.style.boxShadow = "0 3px hsl(35, 11%, 61%)"
+      });
+      header[0].style.color = "black"
+      toggle[0].style.color = "black"
+      reset[0].style.backgroundColor = "hsl(185, 42%, 37%)";
+      reset[0].style.color = "white";
+      reset[0].style.boxShadow = "0 3px hsl(185, 58%, 25%)"
+      del[0].style.backgroundColor = "hsl(185, 42%, 37%)";
+      del[0].style.color = "white";
+      del[0].style.boxShadow = "0 3px hsl(185, 58%, 25%)"
+
+      equal[0].style.backgroundColor = "hsl(25, 98%, 40%)";
+      equal[0].style.color = "white";
+      equal[0].style.boxShadow = "0 3px hsl(25, 99%, 27%) ";
+      document.getElementsByClassName("keypad")[0].style.backgroundColor = " hsl(0, 5%, 81%)";
+      document.getElementsByClassName("screen")[0].style.backgroundColor ="hsl(0, 0%, 93%)";
+      screen[0].style.color ="black";
+       input[0].style.backgroundColor =" hsl(0, 5%, 81%)";
+      element.style.backgroundColor = "hsl(25, 98%, 40%)"
+      document.getElementsByTagName("ul")[0].style.color = "black"
+
+    } else {
+      document.getElementsByTagName("body")[0].style.backgroundColor ="hsl(268, 75%, 9%)";
+      td.forEach((item) => {
+        item.style.backgroundColor =" hsl(268, 47%, 21%)";
+        item.style.color =" yellow";
+        item.style.boxShadow = "0 3px hsl(285, 91%, 52%)"
+      });
+      header[0].style.color = "yellow"
+      toggle[0].style.color = "yellow"
+      reset[0].style.backgroundColor = "hsl(281, 89%, 26%)";
+      del[0].style.backgroundColor = "hsl(281, 89%, 26%)";
+      del[0].style.color = "yellow";
+      equal[0].style.backgroundColor = "hsl(176, 100%, 44%)";
+      equal[0].style.color = "black";
+      equal[0].style.boxShadow = "0 3px hsl(177, 92%, 70%)";
+      keypad[0].style.backgroundColor = "hsl(268, 71%, 12%)";
+      screen[0].style.backgroundColor ="hsl(268, 71%, 12%)";
+      screen[0].style.color ="yellow";
+      input[0].style.backgroundColor ="hsl(268, 71%, 12%)";
+      element.style.backgroundColor = "hsl(176, 100%, 44%)"
+      document.getElementsByTagName("ul")[0].style.color = "yellow"
+
+    }
+    arr
+      .filter(function (item) {
+        return item != element;
+      })
+      .forEach((item) => {
+        item.style.opacity = "0";
+      });
+  });
+});
+
+
+
+
+
+// function clickHandler(e) {
+//     // Here, `this` refers to the element the event was hooked on
+//     console.log("clicked");
+//     console.log(e)
+// }
+
+const display = document.querySelector('.screen')
+document.querySelectorAll('#myTable td').forEach(e => e.addEventListener("click", function clickHandler(e) {
+  
+
+//   const key = e.target
+// const action = key.dataset.action
+
+
+//     if (!action) {
+//   console.log('number key!')
+// }
+
+// if (
+//   action === 'add' ||
+//   action === 'subtract' ||
+//   action === 'multiply' ||
+//   action === 'divide'
+// ) {
+//   console.log('operator key!')
+// }
+
+// if (action === 'decimal') {
+//   console.log('decimal key!')
+// }
+
+// if (action === 'clear') {
+//   console.log('clear key!')
+// }
+
+// if (action === 'calculate') {
+//   console.log('equal key!')
+// }
+
+
+
+    if (e.target.matches('td')) {
+   const key = e.target
+    const action = key.dataset.action
+    const keyContent = key.textContent
+    const displayedNum = display.textContent
+
+    if (!action) {
+      if (displayedNum === '0') {
+        display.textContent = keyContent
+      } else {
+        display.textContent = displayedNum + keyContent
+      }
+    }
+
+
+if (action === 'decimal') {
+  display.textContent = displayedNum + '.'
+}
+
+
+if (
+  action === 'add'  ||
+  action === 'subtract' ||
+  action === 'multiply' ||
+  action === 'divide'
+) {
+  console.log(action )
+  key.classList.add('is-depressed')
+}
+
+
+
+if (
+  action === 'reset' ||
+  action === 'clear'
+) {
+  display.textContent = 0 
+}
+
+
+
+ }
+
+ 
+
+ 
+    
+    
+}));
+
+
+
+</script>
+</body>
+</html>
